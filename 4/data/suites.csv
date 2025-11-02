@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Nov 02 19:36:52 GMT 2025","Sun Nov 02 19:37:08 GMT 2025","16459","Harel Travel Policy Suite","E2E","tests.TravelInsuranceTest","tests.TravelInsuranceTest","travelFlow_FirstTimeBuyer_CalendarOnly_ComputedDates","travelFlow_FirstTimeBuyer_CalendarOnly_ComputedDates",""
