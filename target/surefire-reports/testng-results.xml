@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-02T18:11:55 UTC" name="Harel Travel Policy Suite" finished-at="2025-11-02T18:12:07 UTC" duration-ms="12275">
+    <groups>
+    </groups>
+    <test started-at="2025-11-02T18:11:55 UTC" name="E2E" finished-at="2025-11-02T18:12:07 UTC" duration-ms="12275">
+      <class name="tests.TravelInsuranceTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.TravelInsuranceTest@58cbafc2]" started-at="2025-11-02T18:11:55 UTC" name="setUp" finished-at="2025-11-02T18:11:56 UTC" duration-ms="1129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="travelFlow_FirstTimeBuyer_CalendarOnly_ComputedDates()[pri:0, instance:tests.TravelInsuranceTest@58cbafc2]" started-at="2025-11-02T18:11:56 UTC" name="travelFlow_FirstTimeBuyer_CalendarOnly_ComputedDates" finished-at="2025-11-02T18:12:07 UTC" duration-ms="10945" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- travelFlow_FirstTimeBuyer_CalendarOnly_ComputedDates -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.TravelInsuranceTest@58cbafc2]" started-at="2025-11-02T18:12:07 UTC" name="tearDown" finished-at="2025-11-02T18:12:07 UTC" duration-ms="86" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.TravelInsuranceTest -->
+    </test> <!-- E2E -->
+  </suite> <!-- Harel Travel Policy Suite -->
+</testng-results>
