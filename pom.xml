@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>qa.homeexam</groupId>
   <artifactId>harel-travel-policy-e2e</artifactId>
   <version>1.0.0</version>
@@ -10,18 +12,21 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     <selenium.version>4.25.0</selenium.version>
     <testng.version>7.10.2</testng.version>
     <allure.testng.version>2.27.0</allure.testng.version>
   </properties>
 
   <dependencies>
+    <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>${selenium.version}</version>
     </dependency>
 
+    <!-- TestNG -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -29,6 +34,7 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- ExtentReports (optional, HTML) -->
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
@@ -36,7 +42,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Allure TestNG adapter (produces target/allure-results) -->
+    <!-- Allure + TestNG adapter -->
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
@@ -47,93 +53,31 @@
 
   <build>
     <plugins>
+      <!-- Surefire runs TestNG suite -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
-          <includes>
-            <include>**/*Test.java</include>
-          </includes>
+          <suiteXmlFiles>
+            <suiteXmlFile>TestNG.xml</suiteXmlFile>
+          </suiteXmlFiles>
           <systemPropertyVariables>
+            <!-- headless via -Dheadless=true in CI -->
             <headless>${headless}</headless>
+            <!-- Selenium downloads cache -->
             <SE_DOWNLOADS>${user.home}/.cache/selenium</SE_DOWNLOADS>
-            <!-- Where the Allure adapter writes JSON -->
+            <!-- Allure results dir -->
             <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-            <!-- Tell Surefire to use your TestNG suite file -->
-            <suiteXmlFiles>TestNG.xml</suiteXmlFiles>
           </systemPropertyVariables>
         </configuration>
       </plugin>
-    </plugins>
-  </build>
-</project>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>qa.homeexam</groupId>
-  <artifactId>harel-travel-policy-e2e</artifactId>
-  <version>1.0.0</version>
 
-  <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <selenium.version>4.25.0</selenium.version>
-    <testng.version>7.10.2</testng.version>
-    <allure.testng.version>2.27.0</allure.testng.version>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>${testng.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.aventstack</groupId>
-      <artifactId>extentreports</artifactId>
-      <version>5.1.2</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Allure TestNG adapter (produces target/allure-results) -->
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-testng</artifactId>
-      <version>${allure.testng.version}</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
+      <!-- Allure Maven plugin (version available on Maven Central) -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.5</version>
-        <configuration>
-          <includes>
-            <include>**/*Test.java</include>
-          </includes>
-          <systemPropertyVariables>
-            <headless>${headless}</headless>
-            <SE_DOWNLOADS>${user.home}/.cache/selenium</SE_DOWNLOADS>
-            <!-- Where the Allure adapter writes JSON -->
-            <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-            <!-- Tell Surefire to use your TestNG suite file -->
-            <suiteXmlFiles>TestNG.xml</suiteXmlFiles>
-          </systemPropertyVariables>
-        </configuration>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.12.0</version>
       </plugin>
     </plugins>
   </build>
