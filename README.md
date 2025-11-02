@@ -65,3 +65,19 @@ https://maxily1.github.io/qa-exam/
 # In the repo root
 mvn -q -Dheadless=true -Dsurefire.suiteXmlFiles=TestNG.xml test
 
+### 2a) Generate & open Allure via Maven plugin (static site)
+# Generate static Allure site under target/site/allure-maven-plugin
+mvn -q io.qameta.allure:allure-maven:2.12.0:report
+
+# Serve it with the JDK’s static server (Java 18+), then open the URL it prints
+jwebserver -p 8080 -b 0.0.0.0 --directory "$(pwd)/target/site/allure-maven-plugin"
+
+### 2b) (Alternative) Use Allure CLI
+# Build dynamic report and open it (requires allure binary)
+allure serve target/allure-results
+
+### Where to find artifacts locally
+- Allure results: target/allure-results/
+- Allure static site (Maven): target/site/allure-maven-plugin/
+- Per-step screenshots & HTML: target/*.png, target/*.html
+- Extent report: target/extent-report/index.html
